@@ -22,5 +22,15 @@ Thumbs.db
 *.names
 *.DOCUMENTATION
 
+# Question 2 intermediate notebooks
+Comparison.ipynb
+Dataset_info.ipynb
+DecisionTrees.ipynb
+Lasso_regression.ipynb
+LinearRegression.ipynb
+PolynomialRegression.ipynb
+Ridge_rgression.ipynb
+
+
 
 
