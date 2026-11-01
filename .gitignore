@@ -22,11 +22,23 @@ Thumbs.db
 *.names
 *.DOCUMENTATION
 
+# Question 2 intermediate exploratory notebooks (only solution2.ipynb is submitted)
+Question2_Regression/Comparison.ipynb
+Question2_Regression/Dataset_info.ipynb
+Question2_Regression/DecisionTrees.ipynb
+Question2_Regression/Lasso_regression.ipynb
+Question2_Regression/LinearRegression.ipynb
+Question2_Regression/PolynomialRegression.ipynb
+Question2_Regression/Ridge_rgression.ipynb
 
-
-
-# Report generation artefacts
-ML_Project_Report.pdf
+# Presentation builder scripts and local artifacts
+build_presentation.py
+generate_html_presentation.py
+presentation.html
+PRESENTATION_GUIDE.md
+requirements.txt
+extracted_figures/
+report_figures/
 generate_report_figures.py
 generate_report_pdf.py
-report_figures/
+report_text.txt

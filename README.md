@@ -16,7 +16,7 @@
 
 ## 📌 Table of Contents
 1. [Project Overview](#-project-overview)
-2. [Presentation & Defense Deliverables](#-presentation--defense-deliverables)
+2. [Project Report & Presentation Deliverables](#-project-report--presentation-deliverables)
 3. [Question 1: Supervised Classification (UCI Spambase)](#-question-1-supervised-classification)
 4. [Question 2: Non-Linear Regression & Regularization (Superconductivity)](#-question-2-non-linear-regression--regularization)
 5. [Question 3: Unsupervised Clustering & PCA (HELP International)](#-question-3-unsupervised-clustering--pca)
@@ -42,22 +42,20 @@ Across all three problem sets:
 
 ---
 
-## 📽️ Presentation & Defense Deliverables
-
-For oral presentation and evaluation, we provide:
+## 📄 Project Report & Presentation Deliverables
 
 | Deliverable | File Link | Description |
 |:---|:---|:---|
-| **PowerPoint Deck (12 Slides)** | [**`ML_Course_Project_Presentation.pptx`**](ML_Course_Project_Presentation.pptx) | Concise, high-impact 16:9 widescreen presentation deck (12 slides) with dark/light themes, clean metric cards, formatted tables, embedded high-res figures, and integrated speaker notes on every slide. |
-| **Interactive HTML Presentation** | [**`presentation.html`**](presentation.html) | Standalone interactive slide deck navigable via keyboard (`▶`/`◀`/`Space`), full-screen mode (`F`), speaker notes drawer (`S`), and 12-slide overview grid (`G`). |
-| **Spoken Script & Viva Defense** | [**`PRESENTATION_GUIDE.md`**](PRESENTATION_GUIDE.md) | Word-for-word spoken presentation lines (10–12 min timing) and a comprehensive defense guide answering 6 tough theoretical/mathematical questions. |
+| **Full Project Report (PDF)** | [**`ML_Project_Report.pdf`**](ML_Project_Report.pdf) | Complete 25-page formal technical report detailing mathematical formulations, cross-validation curves, confusion matrices, capacity analyses, factor loadings, and empirical conclusions. |
+| **PowerPoint Presentation Deck** | [**`ML_Course_Project_Presentation.pptx`**](ML_Course_Project_Presentation.pptx) | Concise, high-impact 16:9 widescreen presentation deck (12 slides) with dark/light themes, clean metric cards, formatted benchmark tables, embedded figures, and integrated speaker notes on every slide. |
 
 ---
 
 ## 📧 Question 1: Supervised Classification
 
 **Dataset:** UCI Spambase — 4,601 email records, 57 continuous features (48 word frequencies, 6 character frequencies, 3 capital run-length metrics).  
-**Class Balance:** 1,813 Spam (39.4%) vs. 2,788 Ham (60.6%). Stratified 80/20 train/test split (3,680 train / 921 test).
+**Class Balance:** 1,813 Spam (39.4%) vs. 2,788 Ham (60.6%). Stratified 80/20 train/test split (3,680 train / 921 test).  
+**Notebook:** [`Question1_Classification/Question1_Classification.ipynb`](Question1_Classification/Question1_Classification.ipynb)
 
 ### Evaluated Model Suite
 1. **K-Nearest Neighbour (KNN):** Distance-based instance classifier. 5-fold CV swept $k \in [1, 21]$; optimal $k=3$ achieved 90.76% CV accuracy.
@@ -74,11 +72,6 @@ For oral presentation and evaluation, we provide:
 | **SVM (RBF, $C=5.0$) 🏆** | **92.40%** | **92.22%** | 88.15% | **0.9014** | 0.9697 | [0.959, 0.979] |
 | **Deep 1D CNN** | 91.53% | 89.26% | **89.26%** | 0.8926 | **0.9718** | [0.961, 0.981] |
 
-<p align="center">
-  <img src="extracted_figures/fig3_confusion_matrices.png" width="48%" alt="Confusion Matrices" />
-  <img src="extracted_figures/fig5_roc_curves.png" width="48%" alt="ROC Curves" />
-</p>
-
 ### Key Classification Findings
 - **Asymmetric Cost of Errors:** In email filtering, False Positives (legitimate email sent to spam) are far more harmful than False Negatives. SVM achieved the highest Precision (92.22%) with only 27 False Positives out of 558 legitimate emails.
 - **Statistical Tie via Bootstrap Resampling:** While the Deep CNN had a higher point estimate for ROC-AUC (0.9718 vs 0.9697), their 1,000 bootstrap 95% confidence intervals heavily overlap ([0.961, 0.981] vs [0.959, 0.979]). SVM was chosen as the champion model due to higher precision, top F1, zero GPU requirements, and deterministic convex optimization.
@@ -88,10 +81,11 @@ For oral presentation and evaluation, we provide:
 ## ⚡ Question 2: Non-Linear Regression & Regularization
 
 **Dataset:** UCI Superconductivity — 21,263 superconductor samples, 81 continuous elemental features derived from 8 atomic properties (atomic mass, ionization energy, atomic radius, density, electron affinity, fusion heat, thermal conductivity, valence).  
-**Target:** Critical transition temperature $T_c \in [0.00021\text{ K}, 185\text{ K}]$, Mean $34.42\text{ K}$. Stratified 80/20 train/test split (17,010 train / 4,253 test).
+**Target:** Critical transition temperature $T_c \in [0.00021\text{ K}, 185\text{ K}]$, Mean $34.42\text{ K}$. Stratified 80/20 train/test split (17,010 train / 4,253 test).  
+**Notebook:** [`Question2_Regression/solution2.ipynb`](Question2_Regression/solution2.ipynb) *(consolidated solution containing all models, cross-validation, degree sweeps, and final evaluation)*
 
 ### Evaluated Model Suite & Regularization
-- **Linear Regression via SGD:** Iterative gradient descent baseline without penalty. Converged to $R^2 = 0.7332$ and $\text{RMSE} = 17.52\text{ K}$.
+- **Linear Regression via SGD:** Iterative gradient descent baseline without penalty. Converged in 62 iterations to $R^2 = 0.7332$ and $\text{RMSE} = 17.52\text{ K}$.
 - **Ridge Regression ($L_2$):** Penalizes $\alpha ||w||_2^2$ to stabilize collinear atomic aggregates. Optimal $\alpha=0.1$ reached $R^2 = 0.7375$ ($\text{RMSE} = 17.38\text{ K}$).
 - **Lasso Regression ($L_1$):** Enforces feature sparsity via $\alpha ||w||_1$. Optimal $\alpha=10^{-5}$ reached $R^2 = 0.7375$.
 - **The Linear Ceiling:** All linear models hit a hard ceiling at $R^2 \approx 0.738$. Collinearity shrinkage prevents coefficient blowup but cannot overcome linear high bias on quantum phenomena.
@@ -100,11 +94,6 @@ For oral presentation and evaluation, we provide:
   - *Degree 2 (135 terms):* Balanced baseline ($R^2 = 0.7348$).
   - *Degree 3 (815 terms):* Train $R^2$ climbs to 0.81 while test error degrades.
   - *Degree 4 (3,875 terms):* Catastrophic variance explosion! Ill-conditioned Vandermonde matrix causes test MSE to explode to negative millions.
-
-<p align="center">
-  <img src="extracted_figures/fig7_polynomial_sweep.png" width="48%" alt="Polynomial Sweep" />
-  <img src="extracted_figures/fig8_regression_comparison.png" width="48%" alt="Regression Comparison" />
-</p>
 
 ### The Breakthrough: Full 81-Feature Polynomial Ridge
 Expanding all 81 elemental features to degree-2 generates **3,402 pairwise interaction terms**. Regularized by Ridge ($\alpha=10.0$):
@@ -124,7 +113,8 @@ Expanding all 81 elemental features to degree-2 generates **3,402 pairwise inter
 ## 🌍 Question 3: Unsupervised Clustering & PCA
 
 **Dataset:** HELP International Country Socio-Economic Dataset — 167 nations evaluated on 9 development and health indicators (`child_mort`, `exports`, `health`, `imports`, `income`, `inflation`, `life_expec`, `total_fer`, `gdpp`).  
-**Preprocessing:** Zero-mean unit-variance Standardization ($x_{ij}^{norm} = \frac{x_{ij} - \mu_j}{\sigma_j}$) to prevent raw GDP (up to \$105,000) from dominating Euclidean distances over child mortality and fertility.
+**Preprocessing:** Zero-mean unit-variance Standardization ($x_{ij}^{norm} = \frac{x_{ij} - \mu_j}{\sigma_j}$) to prevent raw GDP (up to \$105,000) from dominating Euclidean distances over child mortality and fertility.  
+**Notebook:** [`Question3_Clustering_and_PCA/Question3_Clustering_and_PCA.ipynb`](Question3_Clustering_and_PCA/Question3_Clustering_and_PCA.ipynb)
 
 ### K-Means Clustering: Elbow Method & Silhouette Analysis
 Lloyd's algorithm minimizing within-cluster sum of squares ($\text{WCSS}$) with 10 restarts:
@@ -141,12 +131,6 @@ Lloyd's algorithm minimizing within-cluster sum of squares ($\text{WCSS}$) with 
 - **Cluster 0 (36 nations - Developed):** High GDP (\$42.5k), high life expectancy (80.1 yr), low child mortality (5.0).
 - **Cluster 1 (47 nations - Underdeveloped / Urgent Aid Priority):** Severe poverty, low GDP (\$1,909), low life expectancy (56.6 yr), child mortality 92.96 (Haiti, Afghanistan, Mali).
 - **Cluster 2 (84 nations - Developing):** Intermediate income (\$12.3k), GDP (\$6.5k), life expectancy 73.1 yr (India, Brazil, Indonesia).
-
-<p align="center">
-  <img src="extracted_figures/fig10_covariance_heatmap.png" width="31%" alt="Covariance Heatmap" />
-  <img src="extracted_figures/fig11_pca_scree.png" width="31%" alt="PCA Scree Plot" />
-  <img src="extracted_figures/fig12_pca_2d.png" width="31%" alt="2D PCA Projection" />
-</p>
 
 ### PCA from First Principles: Mathematical Eigendecomposition
 Implemented strictly from scratch using the sample covariance matrix $\Sigma = \frac{1}{N-1} X_{norm}^T X_{norm} \in \mathbb{R}^{9 \times 9}$ and solving $\Sigma v_k = \lambda_k v_k$:
@@ -181,52 +165,27 @@ Implemented strictly from scratch using the sample covariance matrix $\Sigma = \
 ```
 ML-course/
 ├── README.md                                  # Comprehensive technical report & documentation
-├── PRESENTATION_GUIDE.md                      # Word-for-word presentation script & viva defense guide
-├── ML_Course_Project_Presentation.pptx        # 16-slide widescreen PowerPoint presentation deck
-├── presentation.html                          # Interactive HTML5 presentation deck with keyboard controls
-├── build_presentation.py                      # Python generator for PPTX presentation deck
-├── generate_html_presentation.py              # Python generator for HTML presentation deck
+├── ML_Project_Report.pdf                      # Complete 25-page formal technical report (PDF)
+├── ML_Course_Project_Presentation.pptx        # 12-slide widescreen PowerPoint presentation deck
 ├── .gitignore                                 # Git ignore patterns
 │
 ├── Question1_Classification/
 │   ├── Question1_Classification.ipynb         # Complete Classification solution & experiments
-│   ├── Q1_(a)_.ipynb                          # Initial Question 1 exploratory notebook
+│   ├── Q1_(a)_.ipynb                          # Exploratory Question 1 notebook
 │   └── Data/
 │       └── spambase.csv                       # UCI Spambase dataset (4,601 records)
 │
 ├── Question2_Regression/
-│   ├── solution2.ipynb                        # Complete Regression solution & regularized modeling
-│   ├── Comparison.ipynb                       # Model comparison & performance metrics
-│   ├── Dataset_info.ipynb                     # EDA and statistical feature exploration
-│   ├── DecisionTrees.ipynb                    # Tree regression experiments
-│   ├── LinearRegression.ipynb                 # Linear SGD baseline experiments
-│   ├── Ridge_rgression.ipynb                  # Ridge regularization experiments
-│   ├── Lasso_regression.ipynb                  # Lasso regularization experiments
-│   ├── PolynomialRegression.ipynb             # Degree sweeps (1 to 4) & interaction analysis
+│   ├── solution2.ipynb                        # Unified Regression solution (SGD, Ridge, Lasso, Poly)
 │   └── superconductivty+data/
 │       ├── train.csv                          # Superconductivity training dataset (21,263 samples)
 │       └── unique_m.csv                       # Chemical composition formulas
 │
-├── Question3_Clustering_and_PCA/
-│   ├── Question3_Clustering_and_PCA.ipynb     # From-scratch K-Means & PCA implementations & validation
-│   └── archive/
-│       ├── Country-data.csv                   # HELP International country dataset (167 nations)
-│       └── data-dictionary.csv                # Socio-economic indicator descriptions
-│
-└── extracted_figures/                         # High-resolution figures from technical analysis
-    ├── fig1_classification_cv.png
-    ├── fig2_svm_cv.png
-    ├── fig3_confusion_matrices.png
-    ├── fig4_complexity_overfitting.png
-    ├── fig5_roc_curves.png
-    ├── fig6_ridge_lasso_cv.png
-    ├── fig7_polynomial_sweep.png
-    ├── fig8_regression_comparison.png
-    ├── fig9_kmeans_elbow_silhouette.png
-    ├── fig10_covariance_heatmap.png
-    ├── fig11_pca_scree.png
-    ├── fig12_pca_2d.png
-    └── fig13_pca_3d.png
+└── Question3_Clustering_and_PCA/
+    ├── Question3_Clustering_and_PCA.ipynb     # From-scratch K-Means & PCA implementations & validation
+    └── archive/
+        ├── Country-data.csv                   # HELP International country dataset (167 nations)
+        └── data-dictionary.csv                # Socio-economic indicator descriptions
 ```
 
 ---
@@ -252,8 +211,6 @@ source .venv/bin/activate
 
 ### 3. Install Dependencies
 ```bash
-pip install -r requirements.txt
-# Or install core packages directly:
 pip install numpy pandas scikit-learn matplotlib seaborn torch python-pptx jupyter
 ```
 
@@ -261,10 +218,6 @@ pip install numpy pandas scikit-learn matplotlib seaborn torch python-pptx jupyt
 ```bash
 jupyter lab
 ```
-
-### 5. Open Presentation Decks
-- **PowerPoint Presentation:** Open `ML_Course_Project_Presentation.pptx` in Microsoft PowerPoint and press `Alt + F5` for Presenter View with speaker notes.
-- **Web Presentation:** Open `presentation.html` in your browser. Press `F` for Full-Screen, `S` for Speaker Notes drawer, and `G` for Slide Grid.
 
 ---
 
