@@ -48,9 +48,9 @@ For oral presentation and evaluation, we provide:
 
 | Deliverable | File Link | Description |
 |:---|:---|:---|
-| **PowerPoint Deck (16 Slides)** | [**`ML_Course_Project_Presentation.pptx`**](ML_Course_Project_Presentation.pptx) | Native 16:9 widescreen presentation deck with dark/light themes, clean metric cards, formatted tables, embedded high-res figures, and integrated speaker notes on every slide. |
-| **Interactive HTML Presentation** | [**`presentation.html`**](presentation.html) | Standalone interactive slide deck navigable via keyboard (`▶`/`◀`/`Space`), full-screen mode (`F`), speaker notes drawer (`S`), and 16-slide overview grid (`G`). |
-| **Spoken Script & Viva Defense** | [**`PRESENTATION_GUIDE.md`**](PRESENTATION_GUIDE.md) | Word-for-word spoken presentation lines (12–15 min timing) and a comprehensive defense guide answering 6 tough theoretical/mathematical questions. |
+| **PowerPoint Deck (12 Slides)** | [**`ML_Course_Project_Presentation.pptx`**](ML_Course_Project_Presentation.pptx) | Concise, high-impact 16:9 widescreen presentation deck (12 slides) with dark/light themes, clean metric cards, formatted tables, embedded high-res figures, and integrated speaker notes on every slide. |
+| **Interactive HTML Presentation** | [**`presentation.html`**](presentation.html) | Standalone interactive slide deck navigable via keyboard (`▶`/`◀`/`Space`), full-screen mode (`F`), speaker notes drawer (`S`), and 12-slide overview grid (`G`). |
+| **Spoken Script & Viva Defense** | [**`PRESENTATION_GUIDE.md`**](PRESENTATION_GUIDE.md) | Word-for-word spoken presentation lines (10–12 min timing) and a comprehensive defense guide answering 6 tough theoretical/mathematical questions. |
 
 ---
 
