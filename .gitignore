@@ -24,3 +24,9 @@ Thumbs.db
 
 
 
+
+# Report generation artefacts
+ML_Project_Report.pdf
+generate_report_figures.py
+generate_report_pdf.py
+report_figures/
