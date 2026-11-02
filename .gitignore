@@ -42,3 +42,10 @@ report_figures/
 generate_report_figures.py
 generate_report_pdf.py
 report_text.txt
+
+# Node/JS temporary presentation build artifacts
+create_fresh_presentation.mjs
+*.mjs
+.fresh-presentation-build/
+node_modules/
+output/
