@@ -49,3 +49,16 @@ create_fresh_presentation.mjs
 .fresh-presentation-build/
 node_modules/
 output/
+
+# Local runner scripts and generated result data (not submitted to repo)
+build_report.py
+run_q1.py
+run_q2.py
+run_q3.py
+results_q*.json
+results_*.json
+CHANGES.md
+ML_Assignment_Submission.zip
+backup_latest/
+*.Zone.Identifier
+ML M2026 project.pdf
