@@ -36,7 +36,6 @@ build_presentation.py
 generate_html_presentation.py
 presentation.html
 PRESENTATION_GUIDE.md
-requirements.txt
 extracted_figures/
 report_figures/
 generate_report_figures.py
